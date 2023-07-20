@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>CODING</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -139,6 +139,7 @@
         </div>
       </div>
     </div>
+    <button class="backBtn">이전</button>
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
@@ -147,30 +148,66 @@
     <script>
       // 이미지 이동
 
+      let nextImg = 1;
+
       $(".slide-1").on("click", function () {
         $(".slide-container").css("transform", "translateX(0vw)");
       });
 
       $(".slide-2").on("click", function () {
         $(".slide-container").css("transform", "translateX(-100vw)");
+        nextImg = 2;
       });
 
       $(".slide-3").on("click", function () {
         $(".slide-container").css("transform", "translateX(-200vw)");
+        nextImg = 3;
       });
 
-      let nextImg = 0;
-      let slideWid = 100;
       $(".nextBtn").on("click", function () {
+        $(".slide-container").css(
+          "transform",
+          "translateX(-" + nextImg + "00vw)"
+        );
         nextImg++;
-        let imgWid = `translateX(-${nextImg * slideWid}vw)`;
-        console.log(nextImg);
-        $(".slide-container").css("transform", imgWid);
-        if (nextImg > 2) {
+        if (nextImg > 3) {
           $(".slide-container").css("transform", "translateX(0vw)");
-          nextImg = 0;
+          nextImg = 1;
         }
+        console.log(nextImg);
       });
+
+      $(".backBtn").on("click", function () {
+        $(".slide-container").css(
+          "transform",
+          "translateX(" + nextImg + "00vw)"
+        );
+        nextImg++;
+        if (nextImg === 1) {
+          $(".slide-container").css("transform", "translateX(0vw)");
+          nextImg = 1;
+        }
+        console.log(nextImg);
+      });
+
+      // $(".nextBtn").on("click", function () {
+      //   if (nextImg <= 3) {
+      //     $(".slide-container").css("transform", "translateX(-100vw)");
+      //     nextImg++;
+      //   }
+      // });
+
+      // let slideWid = 100;
+      // $(".nextBtn").on("click", function () {
+      //   nextImg++;
+      //   let imgWid = `translateX(-${nextImg * slideWid}vw)`;
+      //   console.log(nextImg);
+      //   $(".slide-container").css("transform", imgWid);
+      //   if (nextImg > 2) {
+      //     $(".slide-container").css("transform", "translateX(0vw)");
+      //     nextImg = 0;
+      //   }
+      // });
     </script>
   </body>
 </html>
