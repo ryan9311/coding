@@ -113,12 +113,15 @@
     <script>
       // 5초 카운트 끝나면 창 사라지게 하기.
       let count = 5;
-      setInterval(function () {
+
+      let timer = setInterval(function () {
         count--;
         $(".alert-danger").html(count + "초 이내 구매시 사은품 증정");
         if (count === 0) {
           $(".alert-danger").hide();
+          clearTimeout(timer);
         }
+        console.log(count);
       }, 1000);
     </script>
   </body>
