@@ -93,22 +93,23 @@
       });
 
       $("form").on("submit", function (e) {
-        if (document.getElementById("email").value == "") {
-          alert("아이디 입력해주세요");
+        let email = document.getElementById("email").value;
+        if (/\S+@\S+\.\S+/.test(email) == false) {
+          alert("이메일 형식으로 쓰셈!");
           e.preventDefault();
         }
 
-        if (document.getElementById("pw").value == "") {
-          alert("비밀번호를 입력해주세요");
-          e.preventDefault();
-        } else if (document.getElementById("pw").value.length < 6) {
-          alert("비밀번호는 6자리 이상!");
-          e.preventDefault();
+        let pw = document.getElementById("pw").value;
+
+        if (/[A-Z]/.test(pw) == false) {
+          alert("비밀번호에 대문자 1개는 넣어야함");
         }
       });
     </script>
 
-    <div class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
+    <div class="alert alert-danger">
+      <span id="num">5</span> 초 이내 구매시 사은품 증정!
+    </div>
 
     <script>
       // 5초 카운트 끝나면 창 사라지게 하기.
@@ -116,7 +117,7 @@
 
       let timer = setInterval(function () {
         count--;
-        $(".alert-danger").html(count + "초 이내 구매시 사은품 증정");
+        $("#num").html(count);
         if (count === 0) {
           $(".alert-danger").hide();
           clearTimeout(timer);
