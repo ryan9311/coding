@@ -1,0 +1,44 @@
+.alert-box {
+  background-color: skyblue;
+  padding: 20px;
+  color: white;
+  border-radius: 5px;
+  display: none;
+}
+.alert-box1 {
+  background-color: orange;
+  padding: 20px;
+  color: white;
+  border-radius: 5px;
+  display: none;
+}
+
+.list-group {
+  visibility: hidden;
+  overflow: hidden;
+  height: 0px;
+  transition: all 1s;
+}
+
+.show {
+  visibility: visible;
+  height: 400px;
+}
+
+.main-bg {
+  padding: 100px 20px;
+  background-color: lightgray;
+}
+
+.idcheck {
+  color: red;
+  font-size: 11px;
+  padding: 0;
+  margin: 3px;
+  font-weight: bold;
+  display: none;
+}
+
+.check-in {
+  display: block;
+}

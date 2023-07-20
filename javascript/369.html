@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>369</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form>
+      <input type="number" id="num" />
+      <button type="submit">보내기</button>
+    </form>
+    <p id="clap">아니야</p>
+
+    <script>
+      $("form").on("submit", function (e) {
+        e.preventDefault();
+        if (document.getElementById("num").value % 9 === 0) {
+          document.getElementById("clap").innerHTML = "박수x2";
+        } else if (document.getElementById("num").value % 3 === 0) {
+          document.getElementById("clap").innerHTML = "박수";
+        } else {
+          document.getElementById("clap").innerText = "통과";
+        }
+      });
+    </script>
+  </body>
+</html>

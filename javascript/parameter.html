@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script>
+      function passTest(a, b) {
+        if (a < 40 || b < 40) {
+          console.log("불합격!");
+        } else if (a + b >= 120) {
+          console.log("합격!");
+        } else {
+          console.log("불합격!");
+        }
+
+        if (a !== Number || b !== Number) {
+          alert("숫자만 입력!");
+        }
+      }
+    </script>
+  </body>
+</html>

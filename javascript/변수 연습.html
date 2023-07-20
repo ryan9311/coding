@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script>
+      let age = 20;
+      const city = "서울";
+
+      var name = "park";
+      var id = 0;
+
+      function showName() {
+        var name = "kim";
+        var id = 1;
+        console.log(name);
+        // kim
+      }
+
+      showName();
+      console.log(id);
+      // 0
+
+      var cash = 10000;
+      var amount = 0;
+
+      if (cash > 50000) {
+        cash += cash * 0.2;
+        console.log(cash);
+        cash += cash * 0.2;
+        console.log(cash);
+      } else if (cash < 50000) {
+        cash += cash * 0.15;
+        console.log(cash);
+        cash += cash * 0.15;
+        console.log(cash);
+      }
+    </script>
+  </body>
+</html>

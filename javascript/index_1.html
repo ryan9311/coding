@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="hi">안녕하세요</h1>
+    <h1 id="hello">JS뉴비</h1>
+
+    <script>
+      document.getElementById("hi").innerHTML = "안녕";
+      // 문서 (의) id가hi인요소가져와(의)안에HTML을 "안녕"
+      document.getElementById("hi").style.color = "red";
+
+      document.getElementById("hello").innerHTML = "JS 고수";
+      //       -----------------------
+      //                셀렉터
+
+      document.getElementById("hi").style.fontSize = "16px";
+    </script>
+  </body>
+</html>
