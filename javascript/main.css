@@ -29,16 +29,3 @@
   padding: 100px 20px;
   background-color: lightgray;
 }
-
-.idcheck {
-  color: red;
-  font-size: 11px;
-  padding: 0;
-  margin: 3px;
-  font-weight: bold;
-  display: none;
-}
-
-.check-in {
-  display: block;
-}

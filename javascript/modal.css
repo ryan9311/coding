@@ -19,3 +19,16 @@
   visibility: visible;
   opacity: 1;
 }
+
+.idcheck {
+  color: red;
+  font-size: 11px;
+  padding: 0;
+  margin: 3px;
+  font-weight: bold;
+  display: none;
+}
+
+.check-in {
+  display: block;
+}

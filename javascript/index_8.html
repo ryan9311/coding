@@ -37,6 +37,15 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <script>
+      // Navbar
+      document
+        .querySelector(".navbar-toggler")
+        .addEventListener("click", function () {
+          document.querySelector("#test1").classList.toggle("show");
+        });
+    </script>
+
     <!-- 모달 -->
     <div class="black-bg">
       <div class="white-bg">
@@ -62,16 +71,6 @@
     </div>
 
     <script>
-      document.getElementById("email").addEventListener("input", function () {
-        console.log("안녕");
-      });
-
-      // Navbar
-      document
-        .querySelector(".navbar-toggler")
-        .addEventListener("click", function () {
-          document.querySelector("#test1").classList.toggle("show");
-        });
       // 모달 기능
       $("#login").on("click", function () {
         $(".black-bg").addClass("show-modal");
@@ -107,6 +106,14 @@
           e.preventDefault();
         }
       });
+    </script>
+
+    <div class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
+
+    <script>
+      setTimeout(function () {
+        $(".alert").hide();
+      }, 5000);
     </script>
   </body>
 </html>
