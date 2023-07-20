@@ -148,44 +148,46 @@
     <script>
       // 이미지 이동
 
-      let nextImg = 1;
+      let nextImg = 0;
 
       $(".slide-1").on("click", function () {
         $(".slide-container").css("transform", "translateX(0vw)");
+        nextImg = 0;
       });
 
       $(".slide-2").on("click", function () {
         $(".slide-container").css("transform", "translateX(-100vw)");
-        nextImg = 2;
+        nextImg = 1;
       });
 
       $(".slide-3").on("click", function () {
         $(".slide-container").css("transform", "translateX(-200vw)");
-        nextImg = 3;
+        nextImg = 2;
       });
 
       $(".nextBtn").on("click", function () {
+        nextImg++;
+        console.log(nextImg);
         $(".slide-container").css(
           "transform",
           "translateX(-" + nextImg + "00vw)"
         );
-        nextImg++;
-        if (nextImg > 3) {
+        if (nextImg >= 3) {
           $(".slide-container").css("transform", "translateX(0vw)");
-          nextImg = 1;
+          nextImg = 0;
         }
         console.log(nextImg);
       });
 
       $(".backBtn").on("click", function () {
+        nextImg--;
         $(".slide-container").css(
           "transform",
-          "translateX(" + nextImg + "00vw)"
+          "translateX(-" + nextImg + "00vw)"
         );
-        nextImg++;
-        if (nextImg === 1) {
-          $(".slide-container").css("transform", "translateX(0vw)");
-          nextImg = 1;
+        if (nextImg < 0) {
+          $(".slide-container").css("transform", "translateX(-200vw)");
+          nextImg = 3;
         }
         console.log(nextImg);
       });
