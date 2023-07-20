@@ -29,3 +29,18 @@
   padding: 100px 20px;
   background-color: lightgray;
 }
+
+.slide-container {
+  width: 300vw;
+  /* transform: translateX(-100vw); */
+  transition: all 1s;
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+}
+
+.slide-box > img {
+  width: 100%;
+}

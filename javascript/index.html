@@ -122,20 +122,55 @@
           $(".alert-danger").hide();
           clearTimeout(timer);
         }
-        console.log(count);
+        // console.log(count);
       }, 1000);
     </script>
 
-    <div class="slide-container">
-      <div class="liide-box">
-        <img src="./img/car1.png" alt="1번 이미지" />
-      </div>
-      <div class="liide-box">
-        <img src="./img/car2.png" alt="2번 이미지" />
-      </div>
-      <div class="liide-box">
-        <img src="./img/car3.png" alt="3번 이미지" />
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="./img/car1.png" alt="1번 이미지" />
+        </div>
+        <div class="slide-box">
+          <img src="./img/car2.png" alt="2번 이미지" />
+        </div>
+        <div class="slide-box">
+          <img src="./img/car3.png" alt="3번 이미지" />
+        </div>
       </div>
     </div>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="nextBtn">다음</button>
+
+    <script>
+      // 이미지 이동
+
+      $(".slide-1").on("click", function () {
+        $(".slide-container").css("transform", "translateX(0vw)");
+      });
+
+      $(".slide-2").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-100vw)");
+      });
+
+      $(".slide-3").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-200vw)");
+      });
+
+      let nextImg = 0;
+      let slideWid = 100;
+      $(".nextBtn").on("click", function () {
+        nextImg++;
+        let imgWid = `translateX(-${nextImg * slideWid}vw)`;
+        console.log(nextImg);
+        $(".slide-container").css("transform", imgWid);
+        if (nextImg > 2) {
+          $(".slide-container").css("transform", "translateX(0vw)");
+          nextImg = 0;
+        }
+      });
+    </script>
   </body>
 </html>
