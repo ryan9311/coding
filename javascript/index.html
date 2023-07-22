@@ -29,6 +29,27 @@
       </div>
     </nav>
 
+    <div style="height: 1000px"></div>
+    <script>
+      window.addEventListener("scroll", function () {
+        let logoScroll = window.scrollY;
+        if (logoScroll >= 100) {
+          $(".navbar-brand").css("font-size", "20px");
+        } else if (logoScroll < 100) {
+          $(".navbar-brand").css("font-size", "30px");
+        }
+      });
+
+      // window.addEventListener("scroll", function () {
+      //   console.log(window.scrollY);
+      //   $(window).on("scroll", function () {
+      //     $(window).scrollTop();
+      //   });
+      // window.scrollTo(0, 100); 스크롤 위치 변경
+      // window.scrollBy(0, 100); 현재 위치에서 강제 스크롤 위치 변경
+      // });
+    </script>
+
     <ul class="list-group" id="test1">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
@@ -69,6 +90,30 @@
       <h4>Main Page</h4>
       <button id="login" class="btn btn-danger">로그인</button>
     </div>
+
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque excepturi
+      facilis quae maxime optio. Nostrum, facilis. Quidem ipsam explicabo
+      placeat aliquid laudantium itaque provident, alias asperiores voluptatem
+      earum eos odit!
+    </div>
+
+    <script>
+      // div의 스크롤바 내린양 + 눈에보이는 div 높이 == div의 실제높이
+      // 얼럿띄우기
+      let alertShow = false;
+
+      $(".lorem").on("scroll", function () {
+        function name(params) {}
+        let scrollDrop = document.querySelector(".lorem").scrollTop; // 스크롤 내린양
+        let scrollSize = document.querySelector(".lorem").scrollHeight; // 실제 높이
+        let scrollSize2 = document.querySelector(".lorem").clientHeight; // 눈에 보이는 높이
+        if (scrollDrop + scrollSize2 > scrollSize - 10 && !alertShow) {
+          alert("약관모두 읽음");
+          alertShow = true;
+        }
+      });
+    </script>
 
     <script>
       // 모달 기능
