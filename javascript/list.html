@@ -55,9 +55,7 @@
 
       function itemInfo(itemNum) {
         $(".itemTitle").eq(itemNum).html(products[itemNum].title);
-        $(".itemPrice")
-          .eq(itemNum)
-          .html(" 가격 : " + products[itemNum].price);
+        $(".itemPrice").eq(itemNum).html(` 가격 : ${products[itemNum].price} `);
       }
 
       for (let i = 0; i < products.length; i++) {

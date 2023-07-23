@@ -26,6 +26,32 @@
       </div>
     </div>
 
+    <form class="container my-5 form-group">
+      <p>상품선택</p>
+      <select class="form-select mt-2">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+      <select class="form-select mt-2 form-hide">
+        <option>95</option>
+        <option>100</option>
+        <option>105</option>
+      </select>
+    </form>
+
+    <script>
+      $(".form-select")
+        .eq(0)
+        .on("input", function () {
+          let item = $(".form-select").eq(0).val();
+          if (item == "셔츠") {
+            $(".form-select").eq(1).removeClass("form-hide");
+          } else if (item !== "셔츠") {
+            $(".form-select").eq(1).addClass("form-hide");
+          }
+        });
+    </script>
+
     <script>
       let car = ["소나타", 50000, "white"];
       let car2 = { name: "소나타", price: [50000, 3000, 4000] };

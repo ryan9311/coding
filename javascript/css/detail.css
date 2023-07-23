@@ -31,6 +31,11 @@ ul.list::after {
   display: none;
   padding: 10px;
 }
+
 .show {
   display: block;
+}
+
+.form-hide {
+  display: none;
 }
