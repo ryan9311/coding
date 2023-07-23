@@ -62,5 +62,15 @@
         itemInfo(i);
       }
     </script>
+
+    <script>
+      $.get("https://codingapple1.github.io/price.json")
+        .done(function (data) {
+          console.log(data);
+        })
+        .fail(function () {
+          console.log("실패 ㅠ");
+        });
+    </script>
   </body>
 </html>
