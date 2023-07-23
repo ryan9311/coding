@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <form class="name">
+        <input id="name" type="text" />
+        <button type="submit">제출</button>
+      </form>
+    </div>
+
+    <!-- 안에서 내용 찾기 -->
+    <script>
+      let 출석부 = ["흥민", "영희", "철수", "재석", "철수"];
+
+      $("form").on("submit", function (e) {
+        e.preventDefault();
+        let nameIput = $("#name").val();
+
+        출석부.forEach((name) => {
+          console.log(name);
+          if (nameIput == name) {
+            console.log(`${nameIput} 있어요!`);
+            return;
+          }
+        });
+      });
+    </script>
+
+    <!-- 구구단 -->
+    <script>
+      let result = 0;
+      for (i = 2; i < 10; i++) {
+        console.log(`${i} 단`);
+        for (j = 1; j < 10; j++) {
+          result = i * j;
+          console.log(`${i} X ${j} = ${result}`);
+        }
+      }
+    </script>
+
+    <!-- 이전 평균보다 높은가 낮은가 -->
+    <script>
+      let total = 0;
+      function 평균(arr, b) {
+        for (i = 0; i < arr.length; i++) {
+          total = total + arr[i];
+        }
+
+        let total2 = total / arr.length;
+        console.log(total2);
+        if (total2 > b) {
+          console.log(`평균 ${total2 - b} 점이 올랐네`);
+        }
+      }
+
+      평균([10, 20, 30], 10);
+    </script>
+  </body>
+</html>

@@ -31,6 +31,7 @@
       <select class="form-select mt-2">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
       <select class="form-select mt-2 form-hide">
         <option>95</option>
@@ -39,15 +40,29 @@
       </select>
     </form>
 
+    <div id="hoho"></div>
+
     <script>
+      let pants = [28, 30, 32];
+      let shirts = [95, 100, 105];
       $(".form-select")
         .eq(0)
         .on("input", function () {
           let item = $(".form-select").eq(0).val();
-          if (item == "셔츠") {
+          for (i = 0; i < 2; i++) {
             $(".form-select").eq(1).removeClass("form-hide");
-          } else if (item !== "셔츠") {
-            $(".form-select").eq(1).addClass("form-hide");
+            $(".form-select").eq(1).html("");
+            if (item == "셔츠") {
+              shirts.forEach(function (data) {
+                let shirt = `<option>${data}</option>`;
+                $(".form-select").eq(1).append(shirt);
+              });
+            } else if (item == "바지") {
+              pants.forEach(function (data) {
+                let pant = `<option>${data}</option>`;
+                $(".form-select").eq(1).append(pant);
+              });
+            }
           }
         });
     </script>
