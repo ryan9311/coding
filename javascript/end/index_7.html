@@ -76,6 +76,10 @@
         $(".black-bg").toggleClass("show-modal");
       });
 
+      $(".black-bg").on("click", function () {
+        $(".black-bg").removeClass("show-modal");
+      });
+
       $("form").on("submit", function (e) {
         if (document.getElementById("email").value == "") {
           alert("아이디 입력해주세요");

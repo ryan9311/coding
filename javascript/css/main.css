@@ -59,3 +59,7 @@
   font-size: 30px;
   transition: all 0.5s;
 }
+
+.badge:hover {
+  cursor: pointer;
+}

@@ -23,13 +23,23 @@
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
+        <span id="mode" class="badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
     </nav>
+    <script>
+      $(".badge").on("click", function () {
+        count++;
+        if (count % 2 === 1) {
+          document.getElementById("mode").innerText = "Light 🔄";
+        } else {
+          document.getElementById("mode").innerText = "Dark 🔄";
+        }
+      });
+    </script>
 
-    <div style="height: 1000px"></div>
     <script>
       window.addEventListener("scroll", function () {
         let logoScroll = window.scrollY;
@@ -123,6 +133,12 @@
 
       $("#close").on("click", function () {
         $(".black-bg").toggleClass("show-modal");
+      });
+
+      $(".black-bg").on("click", function (e) {
+        if (e.target === document.querySelector(".black-bg")) {
+          $(".black-bg").removeClass("show-modal");
+        }
       });
 
       document.getElementById("email").addEventListener("input", function () {

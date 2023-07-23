@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CODING</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/tab.js"></script>
+    <link rel="stylesheet" href="./css/detail.css" />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="card p-3">상품명 / 가격</div>
+    </div>
+
+    <script>
+      let car = "소나타";
+      let carPrice = 50000;
+      let carColer = "white";
+    </script>
+
+    <div class="container mt-5">
+      <ul class="list">
+        <li class="tab-button" data-id="0">Products</li>
+        <li class="tab-button" data-id="1">Information</li>
+        <li class="tab-button" data-id="2">Shipping</li>
+      </ul>
+      <div class="tab-content">
+        <p>상품설명입니다. Product</p>
+      </div>
+      <div class="tab-content">
+        <p>스펙설명입니다. Information</p>
+      </div>
+      <div class="tab-content">
+        <p>배송정보입니다. Shipping</p>
+      </div>
+    </div>
+
+    <script>
+      let tab_btn = $(".tab-button");
+      let tab_content = $(".tab-content");
+
+      function tabOpen(tabCase) {
+        tab_btn.removeClass("orange");
+        tab_btn.eq(tabCase).addClass("orange");
+        tab_content.removeClass("show");
+        tab_content.eq(tabCase).addClass("show");
+      }
+
+      $(".list").click(function (e) {
+        tabOpen(Number(e.target.dataset.id));
+      });
+
+      //   for (let i = 0; i < tab_btn.length; i++) {
+      //     tab_btn.eq(i).on("click", function () {
+      //       tabOpen(i);
+      //     });
+      //   }
+
+      //   tab_btn.eq(1).on("click", function () {
+      //     tab_btn.removeClass("orange");
+      //     tab_btn.eq(1).addClass("orange");
+      //     tab_content.removeClass("show");
+      //     tab_content.eq(1).addClass("show");
+      //   });
+
+      //   tab_btn.eq(2).on("click", function () {
+      //     tab_btn.removeClass("orange");
+      //     tab_btn.eq(2).addClass("orange");
+      //     tab_content.removeClass("show");
+      //     tab_content.eq(2).addClass("show");
+      //   });
+    </script>
+  </body>
+</html>
