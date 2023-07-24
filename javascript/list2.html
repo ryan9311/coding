@@ -22,16 +22,79 @@
       <div class="row"></div>
     </div>
 
-    <div class="container">
+    <div class="container my-3">
+      <button class="btn btn-danger" id="price">가격순정렬</button>
+    </div>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="hangle">다가나순정렬</button>
+    </div>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="max6">6만원 이하 상품</button>
+    </div>
+
+    <div class="container my-3">
       <button class="btn btn-danger" id="more">더보기</button>
     </div>
 
     <script>
+      // let arr1 = [7, 3, 5, 2, 40];
+      // let arr2 = ["a", "b", "c", "z", "d"];
+
+      // arr2.sort(function (a, b) {
+      //   return a - b;
+      // });
+      // console.log(arr2);
+
+      // arr1.sort(function (a, b) {
+      //   return b - a;
+      // });
+      // console.log(arr1);
+
+      // 가격 저렴한 순 정렬
+      $("#price").click(function (a, b) {
+        products.sort(function (a, b) {
+          return a.price - b.price;
+          console.log(products);
+        });
+        $(".row").html("");
+        products.forEach(productsCard);
+      });
+
+      // 가격 저렴한 순 정렬 끝
+      // 양수면 a가 오른쪽 음수면 b가 오른쪽
+      $("#hangle").click(function (a, b) {
+        products.sort(function (a, b) {
+          if (a.title < b.title) {
+            return 1;
+          } else if (a.title > b.title) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+        $(".row").html("");
+        products.forEach(productsCard);
+      });
+
+      $("#max6").click(function (a) {
+        let max6 = products.filter(function (a) {
+          return a.price <= 60000;
+        });
+        $(".row").html("");
+        max6.forEach(productsCard);
+      });
+
       let products = [
-        { id: 0, price: 70000, title: "Blossom Dress" },
-        { id: 1, price: 50000, title: "Springfield Shirt" },
-        { id: 2, price: 60000, title: "Black Monastery" },
+        { id: 0, price: 70000, title: "가Blossom Dress" },
+        { id: 1, price: 50000, title: "나Springfield Shirt" },
+        { id: 2, price: 60000, title: "다Black Monastery" },
       ];
+
+      products.sort(function (a, b) {
+        return b - a;
+      });
 
       function productsCard(data) {
         let card = `<div class="col-sm-4">
