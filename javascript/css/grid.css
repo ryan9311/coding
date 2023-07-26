@@ -1,0 +1,27 @@
+body {
+  background: gray;
+  height: 3000px;
+}
+
+.grey {
+  background: lightslategray;
+  height: 2000px;
+  margin-top: 500px;
+}
+
+.imgBox > img {
+  width: 100%;
+}
+
+.imgBox {
+  float: right;
+  width: 400px;
+  position: sticky;
+  top: 100px;
+}
+.txt {
+  float: left;
+  width: 300px;
+  margin-top: 300px;
+  clear: both;
+}
