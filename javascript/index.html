@@ -223,17 +223,16 @@
     <script>
       let start = 0;
       let click = false;
-
       $(".slide-box")
         .eq(0)
-        .on("mousedown", function (e) {
+        .on("touchstart", function (e) {
           start = e.clientX;
           click = true;
         });
 
       $(".slide-box")
         .eq(0)
-        .on("mousemove", function (e) {
+        .on("touchmove", function (e) {
           console.log(e.clientX - start);
           if (click == true) {
             $(".slide-container").css(
@@ -245,8 +244,21 @@
 
       $(".slide-box")
         .eq(0)
-        .on("mouseup", function (e) {
+        .on("touchend", function (e) {
           click = false;
+          if (e.clientX - start < -100) {
+            $(".slide-container")
+              .css("transform", "translateX(-100vw)")
+              .css("transition", "all 0.5s");
+          } else {
+            $(".slide-container")
+              .css("transform", "translateX(0vw)")
+              .css("transition", "all 0.5s");
+          }
+
+          setTimeout(() => {
+            $(".slide-container").css("transition", "none");
+          }, 500);
         });
 
       // 이미지 이동
