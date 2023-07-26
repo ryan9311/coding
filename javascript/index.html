@@ -204,13 +204,13 @@
     <div style="overflow: hidden">
       <div class="slide-container">
         <div class="slide-box">
-          <img src="./img/car1.png" alt="1번 이미지" />
+          <img src="./img/car1.png" alt="1번 이미지" draggable="false" />
         </div>
         <div class="slide-box">
-          <img src="./img/car2.png" alt="2번 이미지" />
+          <img src="./img/car2.png" alt="2번 이미지" draggable="false" />
         </div>
         <div class="slide-box">
-          <img src="./img/car3.png" alt="3번 이미지" />
+          <img src="./img/car3.png" alt="3번 이미지" draggable="false" />
         </div>
       </div>
     </div>
@@ -221,6 +221,34 @@
     <button class="nextBtn">다음</button>
 
     <script>
+      let start = 0;
+      let click = false;
+
+      $(".slide-box")
+        .eq(0)
+        .on("mousedown", function (e) {
+          start = e.clientX;
+          click = true;
+        });
+
+      $(".slide-box")
+        .eq(0)
+        .on("mousemove", function (e) {
+          console.log(e.clientX - start);
+          if (click == true) {
+            $(".slide-container").css(
+              "transform",
+              `translateX( ${e.clientX - start}px )`
+            );
+          }
+        });
+
+      $(".slide-box")
+        .eq(0)
+        .on("mouseup", function (e) {
+          click = false;
+        });
+
       // 이미지 이동
 
       let nextImg = 0;

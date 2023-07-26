@@ -37,7 +37,7 @@
 .slide-container {
   width: 300vw;
   /* transform: translateX(-100vw); */
-  transition: all 1s;
+  /* transition: all 1s; */
 }
 
 .slide-box {
