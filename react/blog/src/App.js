@@ -12,6 +12,8 @@ function App() {
 
   let [modal, Setmodal] = useState(false);
 
+  let [modalTitle, SetmodalTitle] = useState(0);
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -33,6 +35,7 @@ function App() {
               <h4
                 onClick={() => {
                   modal === true ? Setmodal(!true) : Setmodal(true);
+                  SetmodalTitle(i);
                 }}
               >
                 {title[i]}
@@ -52,18 +55,29 @@ function App() {
           </>
         );
       })}
-      {modal === true ? <Modal /> : null}
+      {modal === true ? (
+        <Modal modalTitle={modalTitle} title={title} SetTitle={SetTitle} />
+      ) : null}
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <>
       <div className="modal">
-        <h4>제목</h4>
+        <h4>{props.title[props.modalTitle]}</h4>
         <p>날짜</p>
         <p>상세 내용</p>
+        <button
+          onClick={() => {
+            let titlecopy = [...props.title];
+            titlecopy[0] = "여자 코드 추천";
+            props.SetTitle(titlecopy);
+          }}
+        >
+          글수정
+        </button>
       </div>
     </>
   );
