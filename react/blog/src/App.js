@@ -58,8 +58,7 @@ function App() {
                   SetTitle(copy);
                 }}
               >
-                {" "}
-                삭제{" "}
+                삭제
               </button>
             </div>
           </>
