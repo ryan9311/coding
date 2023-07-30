@@ -9,10 +9,9 @@ function App() {
   ]);
 
   let [like, Setlike] = useState([0, 0, 0]);
-
   let [modal, Setmodal] = useState(false);
-
   let [modalTitle, SetmodalTitle] = useState(0);
+  let [postPlus, SetPostPlus] = useState("");
 
   return (
     <div className="App">
@@ -40,7 +39,8 @@ function App() {
               >
                 {title[i]}
                 <span
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation(); // 이벤트 버블링 방지
                     let likeCount = [...like];
                     likeCount[i] = likeCount[i] + 1;
                     Setlike(likeCount);
@@ -51,6 +51,16 @@ function App() {
                 {like[i]}
               </h4>
               <p>2월 17일 발행</p>
+              <button
+                onClick={() => {
+                  let copy = [...title];
+                  copy.splice(i, 1);
+                  SetTitle(copy);
+                }}
+              >
+                {" "}
+                삭제{" "}
+              </button>
             </div>
           </>
         );
@@ -58,6 +68,26 @@ function App() {
       {modal === true ? (
         <Modal modalTitle={modalTitle} title={title} SetTitle={SetTitle} />
       ) : null}
+      <input
+        onChange={(e) => {
+          SetPostPlus(e.target.value);
+          console.log(postPlus);
+        }}
+      ></input>
+      <button
+        onClick={function () {
+          // 1. title 배열 가져오기
+          let copy = [...title];
+          // 2. 가져온 배열에 배열 추가하기
+          // console.log(newTitle);
+          // SetTitle([...title, newTitle]);
+          // Spread 연산자를 통해 배열 추가했지만 뒤에 추가가됨.
+          copy.unshift(`${postPlus}`);
+          SetTitle(copy);
+        }}
+      >
+        등록
+      </button>
     </div>
   );
 }
