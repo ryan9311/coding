@@ -1,15 +1,14 @@
 import { useState } from "react";
 import data from "../data";
 
-function ItemList() {
-  let [shoes] = [data];
+function ItemList(props) {
   return (
     <>
       <div className="main-bg"></div>
       <div className="container">
         <div className="row">
-          {shoes.map((a, i) => {
-            return <Card shoes={shoes[i]} i={i}></Card>;
+          {props.shoes.map((a, i) => {
+            return <Card shoes={props.shoes[i]} i={i}></Card>;
           })}
         </div>
       </div>
