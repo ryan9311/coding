@@ -2,8 +2,9 @@ import { useState } from "react";
 import data from "../data";
 import axios from "axios";
 
-function ItemList(props) {
+function ItemList() {
   let [shoes, setShoes] = useState(data);
+  let [btnCnt, setBtnCnt] = useState(2);
 
   return (
     <>
@@ -15,21 +16,24 @@ function ItemList(props) {
           })}
         </div>
       </div>
-      <button
-        onClick={() => {
-          axios
-            .get("https://codingapple1.github.io/shop/data2.json")
-            .then((result) => {
-              let copy = [...shoes, ...result.data];
-              setShoes(copy);
-            })
-            .catch((err) => {
-              console.log("요청 실패:", err);
-            });
-        }}
-      >
-        더 보기
-      </button>
+      {btnCnt > 3 ? null : (
+        <button
+          onClick={() => {
+            setBtnCnt(btnCnt + 1);
+            axios
+              .get(`https://codingapple1.github.io/shop/data${btnCnt}.json`)
+              .then((result) => {
+                let copy = [...shoes, ...result.data];
+                setShoes(copy);
+              })
+              .catch((err) => {
+                console.log("요청 실패:", err);
+              });
+          }}
+        >
+          더 보기
+        </button>
+      )}
     </>
   );
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 // 동적이 UI 만드는 방법
@@ -17,7 +18,6 @@ function Detail(props) {
   useEffect(() => {
     let timer = setTimeout(() => {
       setAlert(false);
-      console.log("didi");
     }, 2000);
     return () => {
       clearTimeout(timer);
@@ -26,6 +26,7 @@ function Detail(props) {
 
   let [count, setCount] = useState(0);
   let [itemCnt, setItemCnt] = useState("");
+  let [tabNum, setTabNum] = useState(0);
 
   console.log(isNaN(itemCnt));
 
@@ -46,7 +47,9 @@ function Detail(props) {
         <div className="col-md-6">
           <img
             src={
-              `https://codingapple1.github.io/shop/shoes` + itemNum.id + `.jpg`
+              `https://codingapple1.github.io/shop/shoes` +
+              (itemNum.id + 1) +
+              `.jpg`
             }
             width="100%"
           />
@@ -66,8 +69,51 @@ function Detail(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
+      <Nav variant="tabs" defaultActiveKey="link0">
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTabNum(0);
+            }}
+            eventKey="link0"
+          >
+            버튼0
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTabNum(1);
+            }}
+            eventKey="link1"
+          >
+            버튼1
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            onClick={() => {
+              setTabNum(2);
+            }}
+            eventKey="link2"
+          >
+            버튼2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabContant tabNum={tabNum} />
     </div>
   );
+}
+
+function TabContant({ tabNum }) {
+  if (tabNum == 0) {
+    return <div>내용0</div>;
+  } else if (tabNum == 1) {
+    return <div>내용1</div>;
+  } else if (tabNum == 2) {
+    return <div>내용2</div>;
+  }
 }
 
 export default Detail;
