@@ -9,7 +9,6 @@ import { useState } from "react";
 
 function App() {
   let navigate = useNavigate();
-  let [shoes] = useState(data);
 
   return (
     <div className="App">
