@@ -3,13 +3,15 @@ import data from "../data";
 import axios from "axios";
 
 function ItemList(props) {
+  let [shoes, setShoes] = useState(data);
+
   return (
     <>
       <div className="main-bg"></div>
       <div className="container">
         <div className="row">
-          {props.shoes.map((a, i) => {
-            return <Card shoes={props.shoes[i]} i={i}></Card>;
+          {shoes.map((a, i) => {
+            return <Card shoes={shoes[i]} i={i}></Card>;
           })}
         </div>
       </div>
@@ -18,16 +20,15 @@ function ItemList(props) {
           axios
             .get("https://codingapple1.github.io/shop/data2.json")
             .then((result) => {
-              let copy = [...props.shoes, ...result.data];
-              props.setShoes(copy);
-              console.log(copy);
+              let copy = [...shoes, ...result.data];
+              setShoes(copy);
             })
-            .catch(() => {
-              console.log("실패!!");
+            .catch((err) => {
+              console.log("요청 실패:", err);
             });
         }}
       >
-        버튼
+        더 보기
       </button>
     </>
   );
