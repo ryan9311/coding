@@ -1,5 +1,6 @@
 import { useState } from "react";
 import data from "../data";
+import axios from "axios";
 
 function ItemList(props) {
   return (
@@ -12,12 +13,27 @@ function ItemList(props) {
           })}
         </div>
       </div>
+      <button
+        onClick={() => {
+          axios
+            .get("https://codingapple1.github.io/shop/data2.json")
+            .then((result) => {
+              let copy = [...props.shoes, ...result.data];
+              props.setShoes(copy);
+              console.log(copy);
+            })
+            .catch(() => {
+              console.log("실패!!");
+            });
+        }}
+      >
+        버튼
+      </button>
     </>
   );
 
   function Card(props) {
-    let [shoes] = useState(data);
-    console.log(shoes);
+    // let [shoes] = useState(data);
     return (
       <>
         <div className="col-md-4">

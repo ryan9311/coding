@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./App.css";
-import { Link, Route, Routes, useNavigate, Outlet } from "react-router-dom";
+import { Route, Routes, useNavigate, Outlet } from "react-router-dom";
 import ItemList from "./routes/ItemList";
 import Detail from "./routes/Detail";
 import data from "./data";
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Ryan_Shop</Navbar.Brand>
+          <Navbar.Brand href="/">Ryan_Shop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
@@ -26,7 +26,7 @@ function App() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/detail");
+                navigate("/detail/0");
               }}
             >
               Detail
@@ -43,7 +43,7 @@ function App() {
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤바</div>} />
         </Route>
-
+        {/* instart/about */}
         <Route path="event" element={<Event />}>
           <Route path="one" element={<p>첫 주문시 양배추 서비스</p>} />
           <Route path="tow" element={<p>생일기념 쿠폰받기</p>} />
