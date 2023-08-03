@@ -27,11 +27,17 @@ function Detail(props) {
   let [count, setCount] = useState(0);
   let [itemCnt, setItemCnt] = useState("");
   let [tabNum, setTabNum] = useState(0);
+  let [fade, setFade] = useState("");
 
-  console.log(isNaN(itemCnt));
+  useEffect(() => {
+    setFade("end");
+    return () => {
+      setFade("");
+    };
+  }, []);
 
   return (
-    <div className="container">
+    <div className={"container start " + fade}>
       {alert == true ? (
         <div className="alert alert-warning">2초이내 구매시 할인!!</div>
       ) : null}
@@ -107,13 +113,22 @@ function Detail(props) {
 }
 
 function TabContant({ tabNum }) {
-  if (tabNum == 0) {
-    return <div>내용0</div>;
-  } else if (tabNum == 1) {
-    return <div>내용1</div>;
-  } else if (tabNum == 2) {
-    return <div>내용2</div>;
-  }
+  let [fade, setFade] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFade("end");
+    }, 100);
+    return () => {
+      setFade("");
+    };
+  }, [tabNum]);
+
+  return (
+    <div className={"start " + fade}>
+      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tabNum]}
+    </div>
+  );
 }
 
 export default Detail;
