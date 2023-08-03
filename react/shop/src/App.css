@@ -5,6 +5,10 @@
   background-position: center;
 }
 
+.card :hover {
+  cursor: pointer;
+}
+
 .start {
   opacity: 0;
 }

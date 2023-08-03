@@ -6,10 +6,12 @@ import ItemList from "./routes/ItemList";
 import Detail from "./routes/Detail";
 import data from "./data";
 import { useState } from "react";
+import Cart from "./routes/Cart";
 
 function App() {
   let navigate = useNavigate();
   let [shoes, setShoes] = useState(data);
+  console.log(shoes);
 
   return (
     <div className="App">
@@ -31,18 +33,26 @@ function App() {
             >
               Detail
             </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
-      <div className="mainBg"></div>
 
       <Routes>
         <Route path="/" element={<ItemList shoes={shoes} />} />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤바</div>} />
         </Route>
+
         {/* instart/about */}
         <Route path="event" element={<Event />}>
           <Route path="one" element={<p>첫 주문시 양배추 서비스</p>} />

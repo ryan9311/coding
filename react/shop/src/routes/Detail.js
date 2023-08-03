@@ -107,14 +107,14 @@ function Detail(props) {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContant tabNum={tabNum} />
+      <TabContant tabNum={tabNum} shoes={props.shoes} />
     </div>
   );
 }
 
-function TabContant({ tabNum }) {
+function TabContant({ tabNum, shoes }) {
   let [fade, setFade] = useState("");
-
+  console.log(shoes);
   useEffect(() => {
     setTimeout(() => {
       setFade("end");
@@ -126,7 +126,11 @@ function TabContant({ tabNum }) {
 
   return (
     <div className={"start " + fade}>
-      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tabNum]}
+      {
+        [<div>{shoes[0].title}</div>, <div>내용1</div>, <div>내용2</div>][
+          tabNum
+        ]
+      }
     </div>
   );
 }

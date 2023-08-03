@@ -1,14 +1,15 @@
 import { useState } from "react";
 import data from "../data";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ItemList() {
   let [shoes, setShoes] = useState(data);
   let [btnCnt, setBtnCnt] = useState(2);
-
+  let navigate = useNavigate();
   return (
     <>
-      <div className="main-bg"></div>
+      <div className="mainBg"></div>
       <div className="container">
         <div className="row">
           {shoes.map((a, i) => {
@@ -41,7 +42,12 @@ function ItemList() {
     // let [shoes] = useState(data);
     return (
       <>
-        <div className="col-md-4">
+        <div
+          onClick={() => {
+            navigate(`/detail/${props.shoes.id}`);
+          }}
+          className="col-md-4 card"
+        >
           <img
             src={
               "https://codingapple1.github.io/shop/shoes" +
