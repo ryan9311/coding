@@ -11,7 +11,6 @@ import Cart from "./routes/Cart";
 function App() {
   let navigate = useNavigate();
   let [shoes, setShoes] = useState(data);
-  console.log(shoes);
 
   return (
     <div className="App">

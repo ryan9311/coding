@@ -1,12 +1,30 @@
 import { Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { chnageAge } from "../store/userSlice";
+import { conutPlus } from "../store";
 
 function Cart() {
   let stock = useSelector((state) => {
     return state.stock;
   });
+
+  let user = useSelector((state) => {
+    return state.user;
+  });
+  let dispatch = useDispatch();
+
   return (
     <>
+      <h5>
+        {user.name} {user.age} 의 장바구니
+      </h5>
+      <button
+        onClick={() => {
+          dispatch(chnageAge());
+        }}
+      >
+        버튼
+      </button>
       <Table>
         <thead>
           <tr>
@@ -27,13 +45,22 @@ function Cart() {
 }
 
 function CartList({ stock, i }) {
+  let dispatch = useDispatch();
   return (
     <>
       <tr>
         <td>{i + 1}</td>
         <td>{stock.name}</td>
         <td>{stock.count}</td>
-        <td>안녕</td>
+        <td>
+          <button
+            onClick={() => {
+              dispatch(conutPlus(i));
+            }}
+          >
+            +
+          </button>
+        </td>
       </tr>
     </>
   );
