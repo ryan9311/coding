@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addItem, conutPlus } from "../store";
 
 // 동적이 UI 만드는 방법
 //1. UI 상태를 저장할 state 만들고
@@ -15,6 +17,10 @@ function Detail(props) {
 
   let [alert, setAlert] = useState(true);
 
+  let stock = useSelector((state) => {
+    return state.stock;
+  });
+
   useEffect(() => {
     let timer = setTimeout(() => {
       setAlert(false);
@@ -28,6 +34,8 @@ function Detail(props) {
   let [itemCnt, setItemCnt] = useState("");
   let [tabNum, setTabNum] = useState(0);
   let [fade, setFade] = useState("");
+
+  let dispatch = useDispatch();
 
   useEffect(() => {
     setFade("end");
@@ -72,7 +80,23 @@ function Detail(props) {
             }}
           />
           {isNaN(itemCnt) == true ? <p>숫자만 입력</p> : null}
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              let serch = stock.find((stock) => {
+                return stock.id == itemNum.id;
+              });
+              if (!serch) {
+                dispatch(
+                  addItem({ id: itemNum.id, name: itemNum.title, count: 1 })
+                );
+              } else {
+                dispatch(conutPlus(itemNum.id));
+              }
+            }}
+          >
+            주문하기
+          </button>
         </div>
       </div>
       <Nav variant="tabs" defaultActiveKey="link0">
@@ -114,7 +138,6 @@ function Detail(props) {
 
 function TabContant({ tabNum, shoes }) {
   let [fade, setFade] = useState("");
-  console.log(shoes);
   useEffect(() => {
     setTimeout(() => {
       setFade("end");

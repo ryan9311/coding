@@ -55,11 +55,12 @@ function CartList({ stock, i }) {
         <td>
           <button
             onClick={() => {
-              dispatch(conutPlus(i));
+              dispatch(conutPlus(stock.id));
             }}
           >
             +
           </button>
+          <button onClick={() => {}}>삭제</button>
         </td>
       </tr>
     </>

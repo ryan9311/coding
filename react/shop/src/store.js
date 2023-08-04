@@ -9,12 +9,18 @@ let stock = createSlice({
   ],
   reducers: {
     conutPlus(state, action) {
-      state[action.payload].count++;
+      let id = state.findIndex((stock) => {
+        return stock.id == action.payload;
+      });
+      state[id].count++;
+    },
+    addItem(state, action) {
+      state.push(action.payload);
     },
   },
 });
 
-export let { conutPlus } = stock.actions;
+export let { conutPlus, addItem } = stock.actions;
 
 export default configureStore({
   reducer: { user: user.reducer, stock: stock.reducer },
