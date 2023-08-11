@@ -1,0 +1,90 @@
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #f6f4eb;
+  width: 1000px;
+  gap: 15px;
+  padding: 0 20px;
+}
+.main {
+  width: 1000px;
+  padding: 15px 20px;
+  background-color: #91c8e4;
+}
+
+.inputBox {
+  height: 30px;
+  margin-bottom: 30px;
+}
+
+.itemList {
+  display: flex;
+  gap: 30px;
+}
+
+.itemBox {
+  background-color: white;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 40px;
+}
+
+.itemImg {
+  width: 200px;
+  height: 200px;
+}
+
+.itemTitle {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.itemCo {
+  margin: 5px 0;
+}
+
+.itemPrice {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.addItem {
+  border: none;
+  width: 100px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.addItem:hover {
+  cursor: pointer;
+}
+
+.cart {
+  background-color: lightgray;
+  padding: 10px 10px;
+}
+
+.cart > div > h4 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.cartArea {
+  height: 300px;
+  background-color: black;
+}

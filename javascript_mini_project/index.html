@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/index.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h3>집꾸미기</h3>
+      </div>
+      <div>Home</div>
+      <div>스토어</div>
+      <div>시공견적</div>
+    </nav>
+    <div class="main">
+      <div class="saerch">
+        <input class="inputBox" type="text" placeholder="검색어입력" />
+      </div>
+      <div class="itemList"></div>
+
+      <div class="cart">
+        <div>
+          <h4>장바구니</h4>
+          <div class="cartArea"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let item = [];
+      let cart = [];
+
+      // JSON 파일 GET 하기
+      $.get("store.json").then((data) => {
+        item = data.products;
+
+        // 아이템 목록 생성
+        item.forEach((a, i) => {
+          $(".itemList").append(`
+          <div class="itemBox">
+            <div class="itemImg">
+              <img class="itemImg" src="${a.photo}" />
+            </div>
+            <div>
+              <h4 class="itemTitle">${a.title}</h4>
+              <p class="itemCo">${a.brand}</p>
+              <p class="itemPrice">가격 : ${a.price}</p>
+            </div>
+            <button class="addItem">담기</button>
+          </div>
+        `);
+        });
+      });
+
+      // 검색기능
+      $(".inputBox").on("input", function () {
+        let saerch = $(".inputBox").val();
+        console.log(item);
+        let saerchItem = item.filter((a) => {
+          console.log(a.title);
+          return a.title.includes(saerch) || a.brand.includes(saerch);
+        });
+
+        $(".itemList").html("");
+
+        saerchItem.forEach((a, i) => {
+          $(".itemList").append(`
+          <div class="itemBox">
+            <div class="itemImg">
+              <img class="itemImg" src="${a.photo}" />
+            </div>
+            <div>
+              <h4 class="itemTitle">${a.title}</h4>
+              <p class="itemCo">${a.brand}</p>
+              <p class="itemPrice">가격 : ${a.price}</p>
+            </div>
+            <button class="addItem">담기</button>
+          </div>
+          `);
+        });
+      });
+    </script>
+  </body>
+</html>
