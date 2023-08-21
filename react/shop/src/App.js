@@ -1,16 +1,26 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import "./App.css";
-import { Route, Routes, useNavigate, Outlet } from "react-router-dom";
+import { Route, Routes, useNavigate, Outlet, json } from "react-router-dom";
 import ItemList from "./routes/ItemList";
 import Detail from "./routes/Detail";
 import data from "./data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cart from "./routes/Cart";
 
 function App() {
+  let obj = { name: "kim" };
+  localStorage.setItem("data", JSON.stringify(obj));
+  let getObj = localStorage.getItem("data");
+  console.log(JSON.parse(getObj).name);
+
   let navigate = useNavigate();
   let [shoes, setShoes] = useState(data);
+
+  if (localStorage.getItem("watched")) {
+  } else {
+    localStorage.setItem("watched", JSON.stringify([]));
+  }
 
   return (
     <div className="App">
