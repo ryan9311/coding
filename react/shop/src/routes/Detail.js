@@ -9,6 +9,15 @@ import { addItem, conutPlus } from "../store";
 //2. state에 따라서 UI가 어떻게 보일지 작성
 
 function Detail(props) {
+  useEffect(() => {
+    let watchItem = localStorage.getItem("watched");
+    watchItem = JSON.parse(watchItem);
+    watchItem.push(itemNum.id);
+    watchItem = new Set(watchItem);
+    watchItem = Array.from(watchItem);
+    localStorage.setItem("watched", JSON.stringify(watchItem));
+  }, []);
+
   let { id } = useParams();
 
   const itemNum = props.shoes.find(function (x) {
