@@ -1,5 +1,10 @@
 <template>
-  <Modal :onerooms="onerooms" :clickId="clickId" :modalOpen="modalOpen" />
+  <Modal
+    @modalClose="modalOpen = false"
+    :onerooms="onerooms"
+    :clickId="clickId"
+    :modalOpen="modalOpen"
+  />
 
   <div class="menu">
     <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
@@ -9,7 +14,17 @@
 
   <h2>원룸#</h2>
 
-  <Card :onerooms="onerooms" :reportCnt="reportCnt" :modalOpen="modalOpen" />
+  <Card
+    @modalOpen="
+      modalOpen = true;
+      clickId = $event;
+    "
+    :oneroom="onerooms[i]"
+    :reportCnt="reportCnt"
+    :modalOpen="modalOpen"
+    v-for="(a, i) in onerooms"
+    :key="i"
+  />
 </template>
 
 <script>
@@ -79,10 +94,6 @@ div {
 }
 
 .menu > a:hover {
-  cursor: pointer;
-}
-
-.productTitle:hover {
   cursor: pointer;
 }
 </style>

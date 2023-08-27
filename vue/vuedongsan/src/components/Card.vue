@@ -1,10 +1,10 @@
 <template>
-  <div v-for="(a, i) in onerooms" :key="i">
-    <img :src="a.image" />
-    <h4 class="productTitle" clickId="i;">
-      {{ a.title }}
+  <div>
+    <img :src="oneroom.image" class="roomImg" />
+    <h4 class="productTitle" @click="$emit('modalOpen', oneroom.id)">
+      {{ oneroom.title }}
     </h4>
-    <p>{{ a.price }}원</p>
+    <p>{{ oneroom.price }}원</p>
     <button>허위매물신고</button>
     <span> 신고 수 : {{ reportCnt[i] }}</span>
   </div>
@@ -14,11 +14,19 @@
 export default {
   name: "Card",
   props: {
-    onerooms: Array,
+    oneroom: Object,
     reportCnt: Number,
     modalOpen: Boolean,
   },
 };
 </script>
 
-<style></style>
+<style>
+.roomImg {
+  width: 500px;
+}
+
+.productTitle:hover {
+  cursor: pointer;
+}
+</style>
