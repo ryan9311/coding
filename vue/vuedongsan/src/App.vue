@@ -1,10 +1,12 @@
 <template>
-  <Modal
-    @modalClose="modalOpen = false"
-    :onerooms="onerooms"
-    :clickId="clickId"
-    :modalOpen="modalOpen"
-  />
+  <transition name="fade">
+    <Modal
+      @modalClose="modalOpen = false"
+      :onerooms="onerooms"
+      :clickId="clickId"
+      :modalOpen="modalOpen"
+    />
+  </transition>
 
   <div class="menu">
     <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
@@ -13,7 +15,11 @@
   <Discount />
 
   <h2>원룸#</h2>
-
+  <button @click="priceHigh">가격 높은순</button>
+  <button @click="priceSort">가격 낮은순</button>
+  <button @click="titleOrder">가나다 순</button>
+  <button @click="priceFilter">50만원 이하 상품</button>
+  <button @click="sortBack">되돌리기</button>
   <Card
     @modalOpen="
       modalOpen = true;
@@ -38,6 +44,7 @@ export default {
   name: "App",
   data() {
     return {
+      oneroomsOrg: [...oneroom],
       clickId: 0,
       onerooms: oneroom,
       modalOpen: false,
@@ -49,11 +56,55 @@ export default {
     reportBtn(i) {
       this.reportCnt[i]++;
     },
+    sortBack() {
+      this.onerooms = [...this.oneroomsOrg];
+    },
+    priceSort() {
+      this.onerooms.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    },
+    priceHigh() {
+      this.onerooms.sort(function (a, b) {
+        if (a.price < b.price) return 1;
+        if (a.price > b.price) return -1;
+        return 0;
+      });
+    },
+    titleOrder() {
+      this.onerooms.sort(function (a, b) {
+        if (a.title < b.title) return -1;
+        if (b.title > a.title) return 1;
+        return 0;
+      });
+    },
+    priceFilter() {
+      this.onerooms.filter(() => {});
+    },
   },
 };
 </script>
 
 <style>
+.fade-enter-from {
+  transform: translateY(-1000px);
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  transform: translateY(0px);
+}
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -67,19 +118,6 @@ body {
 }
 div {
   box-sizing: border-box;
-}
-.black-bg {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  padding: 20px;
-}
-.white-bg {
-  width: 100%;
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
 }
 
 .menu {
