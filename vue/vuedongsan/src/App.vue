@@ -79,9 +79,10 @@ export default {
       });
     },
     priceFilter() {
-      this.onerooms.filter((onerooms) => {
+      const filteredOnerooms = this.onerooms.filter((onerooms) => {
         return onerooms.price <= 500000;
       });
+      this.onerooms = filteredOnerooms;
     },
   },
 };
