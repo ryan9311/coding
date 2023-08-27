@@ -2,21 +2,31 @@
   <div>
     <div class="black-bg" v-if="modalOpen == true">
       <div class="white-bg">
-        <h4>상세페이지</h4>
-        <p>상세페이지내용임</p>
+        <img :src="onerooms[clickId].image" />
+        <h4>{{ onerooms[clickId].title }}</h4>
+        <p>{{ onerooms[clickId].content }}</p>
+        <p>{{ onerooms[clickId].price }} 원</p>
         <button @click="modalOpen = false">닫기</button>
       </div>
     </div>
 
     <div class="menu">
-      <a v-for="(menuItem, i) in menus" :key="i">{{ menuItem }}</a>
+      <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
     </div>
     <h2>원룸#</h2>
 
-    <div v-for="(productArea, i) in products" :key="i">
-      <img src="./assets/room0.jpg" />
-      <h4 class="productTitle" @click="modalOpen = true">{{ productArea }}</h4>
-      <p>50 만원</p>
+    <div v-for="(a, i) in onerooms" :key="i">
+      <img :src="a.image" />
+      <h4
+        class="productTitle"
+        @click="
+          modalOpen = true;
+          clickId = i;
+        "
+      >
+        {{ a.title }}
+      </h4>
+      <p>{{ a.price }}원</p>
       <button @click="reportCnt[i]++">허위매물신고</button>
       <span> 신고 수 : {{ reportCnt[i] }}</span>
     </div>
@@ -24,10 +34,14 @@
 </template>
 
 <script>
+import oneroom from "./assets/oneroom.js";
+
 export default {
   name: "App",
   data() {
     return {
+      clickId: 0,
+      onerooms: oneroom,
       modalOpen: false,
       reportCnt: [0, 0, 0],
       menus: ["Home", "Products", "About"],
