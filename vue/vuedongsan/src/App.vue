@@ -1,47 +1,25 @@
 <template>
-  <div>
-    <div class="black-bg" v-if="modalOpen == true">
-      <div class="white-bg">
-        <img :src="onerooms[clickId].image" />
-        <h4>{{ onerooms[clickId].title }}</h4>
-        <p>{{ onerooms[clickId].content }}</p>
-        <p>{{ onerooms[clickId].price }} 원</p>
-        <button @click="modalOpen = false">닫기</button>
-      </div>
-    </div>
+  <Modal :onerooms="onerooms" :clickId="clickId" :modalOpen="modalOpen" />
 
-    <div class="menu">
-      <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
-    </div>
-
-    <Discount />
-
-    <h2>원룸#</h2>
-
-    <div v-for="(a, i) in onerooms" :key="i">
-      <img :src="a.image" />
-      <h4
-        class="productTitle"
-        @click="
-          modalOpen = true;
-          clickId = i;
-        "
-      >
-        {{ a.title }}
-      </h4>
-      <p>{{ a.price }}원</p>
-      <button @click="reportCnt[i]++">허위매물신고</button>
-      <span> 신고 수 : {{ reportCnt[i] }}</span>
-    </div>
+  <div class="menu">
+    <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
   </div>
+
+  <Discount />
+
+  <h2>원룸#</h2>
+
+  <Card :onerooms="onerooms" :reportCnt="reportCnt" :modalOpen="modalOpen" />
 </template>
 
 <script>
 import oneroom from "./assets/oneroom.js";
-import Discount from "./Discount.vue";
+import Discount from "./components/Discount.vue";
+import Modal from "./components/Modal.vue";
+import Card from "./components/Card.vue";
 
 export default {
-  components: { Discount },
+  components: { Discount, Modal, Card },
   name: "App",
   data() {
     return {
@@ -50,7 +28,6 @@ export default {
       modalOpen: false,
       reportCnt: [0, 0, 0],
       menus: ["Home", "Products", "About"],
-      products: ["역삼동 원룸", "천호동 원룸", "마포구 원룸"],
     };
   },
   methods: {
