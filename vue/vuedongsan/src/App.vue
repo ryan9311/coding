@@ -13,6 +13,9 @@
     <div class="menu">
       <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
     </div>
+
+    <Discount />
+
     <h2>원룸#</h2>
 
     <div v-for="(a, i) in onerooms" :key="i">
@@ -35,8 +38,10 @@
 
 <script>
 import oneroom from "./assets/oneroom.js";
+import Discount from "./Discount.vue";
 
 export default {
+  components: { Discount },
   name: "App",
   data() {
     return {
