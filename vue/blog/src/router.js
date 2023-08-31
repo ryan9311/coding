@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import ContentList from "./components/ContentList.vue";
 import MainHome from "./components/MainHome.vue";
+import ContentDetail from "./components/ContentDetail.vue";
 const routes = [
   {
     path: "/list",
@@ -8,6 +9,19 @@ const routes = [
   },
   {
     path: "/",
+    component: MainHome,
+  },
+  {
+    path: "/detail/:id(\\d+)",
+    component: ContentDetail,
+    children: [
+      {
+        path: "/auther",
+      },
+    ],
+  },
+  {
+    path: "/:anything(.*)",
     component: MainHome,
   },
 ];
