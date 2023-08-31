@@ -1,7 +1,10 @@
 <template>
   <Nav />
   <router-view :blogContents="blogContents"></router-view>
-  <!-- <List :blogContents="blogContents" /> -->
+  <div>
+    <router-link to="/list">리스트 페이지 이동</router-link>
+  </div>
+  <router-link to="/">홈으로 이동</router-link>
 </template>
 
 <script>
