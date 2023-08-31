@@ -12,7 +12,7 @@
     <a v-for="(a, i) in menus" :key="i">{{ a }}</a>
   </div>
 
-  <Discount />
+  <Discount v-if="showDiscount == true" />
 
   <h2>원룸#</h2>
   <button @click="priceHigh">가격 높은순</button>
@@ -44,6 +44,7 @@ export default {
   name: "App",
   data() {
     return {
+      showDiscount: true,
       oneroomsOrg: [...oneroom],
       clickId: 0,
       onerooms: oneroom,
@@ -84,6 +85,11 @@ export default {
       });
       this.onerooms = filteredOnerooms;
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showDiscount = false;
+    }, 2000);
   },
 };
 </script>
