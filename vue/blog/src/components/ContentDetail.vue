@@ -1,5 +1,4 @@
 <template>
-  {{ $route.params.id }}
   <div class="contentHeader">
     <h5>{{ blogContents[$route.params.id].title }}</h5>
     <p>{{ blogContents[$route.params.id].date }}</p>
