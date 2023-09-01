@@ -1,22 +1,17 @@
 <template>
-  <VuestaPost :vueSta="vueSta" />
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import VueSta from "./assets/vuesta.js";
-import VuestaPost from "./components/VuestaPost.vue";
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    VuestaPost,
-  },
-  data() {
-    return {
-      vueSta: VueSta,
-    };
-  },
-};
+    HelloWorld
+  }
+}
 </script>
 
 <style>
