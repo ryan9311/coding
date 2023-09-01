@@ -1,14 +1,11 @@
 <template>
   <div>
-    {{ console.log(vuesta[0]) }}
-    <ContentsPost :vuesta="vuesta" />
-    <ContentsPost />
-    <ContentsPost />
+    <ContentsPost v-for="(a, i) in vuesta" :key="i" :vuesta="vuesta[i]" />
   </div>
 </template>
 
 <script>
-import ContentsPost from "./Post.vue";
+import ContentsPost from "./VuestaPost.vue";
 
 export default {
   name: "VuestaContainer",

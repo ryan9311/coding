@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Vuesta from "./assets/vuesta.js";
+import vuesta from "./assets/vuesta.js";
 import VuestaContainer from "./components/VuestaContainer.vue";
 
 export default {
@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      vuesta: Vuesta,
+      vuesta: vuesta,
     };
   },
 };
