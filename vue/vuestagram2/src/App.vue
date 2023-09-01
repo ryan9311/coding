@@ -1,20 +1,33 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li @click="step = 0">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 2" @click="publish">UpLoad</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <VuestaContainer :vuesta="vuesta" />
+  <VuestaContainer
+    :vuesta="vuesta"
+    :step="step"
+    :imgUrl="imgUrl"
+    @cntTxt="uploadTxt = $event"
+  />
   <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input
+        @change="upload"
+        accept="image/*"
+        multiple
+        type="file"
+        id="file"
+        class="inputfile"
+      />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -34,6 +47,9 @@ export default {
     return {
       vuesta: vuesta,
       moreClick: 0,
+      step: 0,
+      imgUrl: "",
+      uploadTxt: "",
     };
   },
   methods: {
@@ -47,6 +63,28 @@ export default {
         .catch((err) => {
           console.log("err:" + err);
         });
+    },
+    upload(e) {
+      let file = e.target.files;
+      console.log(file[0]);
+      let url = URL.createObjectURL(file[0]);
+      console.log(url);
+      this.imgUrl = url;
+      this.step = 1;
+    },
+    publish() {
+      let uploadFile = {
+        name: "Kim Hyun",
+        userImage: "https://picsum.photos/100?random=3",
+        postImage: `${this.imgUrl}`,
+        likes: 0,
+        date: "May 15",
+        liked: false,
+        content: `${this.uploadTxt}`,
+        filter: "perpetua",
+      };
+      this.vuesta.unshift(uploadFile);
+      this.step = 0;
     },
   },
 };
