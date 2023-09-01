@@ -10,6 +10,7 @@
   </div>
 
   <VuestaContainer :vuesta="vuesta" />
+  <button @click="more">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -22,6 +23,7 @@
 <script>
 import vuesta from "./assets/vuesta.js";
 import VuestaContainer from "./components/VuestaContainer.vue";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -31,7 +33,21 @@ export default {
   data() {
     return {
       vuesta: vuesta,
+      moreClick: 0,
     };
+  },
+  methods: {
+    more() {
+      axios
+        .get(`https://codingapple1.github.io/vue/more${this.moreClick}.json`)
+        .then((result) => {
+          this.vuesta.push(result.data);
+          this.moreClick++;
+        })
+        .catch((err) => {
+          console.log("err:" + err);
+        });
+    },
   },
 };
 </script>
