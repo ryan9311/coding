@@ -1,19 +1,21 @@
 <template>
   <div class="postCard" v-for="(a, i) in vueSta" :key="i">
     <div class="profile">
-      <div
-        class="profileImg"
-        style="background-image: url(https://picsum.photos/100?random=3)"
-      ></div>
-      <div>{{ a.name }}</div>
-      <div>{{ a.date }}</div>
+      <div class="profileWrap">
+        <div
+          class="profileImg"
+          :style="{ backgroundImage: `url(${a.userImage})` }"
+        ></div>
+        <div class="name">{{ a.name }}</div>
+      </div>
+      <div class="date">{{ a.date }}</div>
     </div>
     <div
       class="postImg"
-      style="background-image: url(https://picsum.photos/600?random=5)"
+      :style="{ backgroundImage: `url(${a.postImage})` }"
     ></div>
+    <div class="likes">{{ a.likes }} LIKE</div>
     <div class="content">{{ a.content }}</div>
-    {{ console.log(a.userImage) }}
   </div>
 </template>
 
@@ -31,8 +33,11 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  width: 600px;
+  margin: 0 auto;
   margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 2px 0px;
 }
 
 .profile {
@@ -42,6 +47,13 @@ export default {
   gap: 20px;
   justify-content: center;
   margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.profileWrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .profileImg {
@@ -57,7 +69,13 @@ export default {
   height: 600px;
 }
 
+.likes {
+  display: flex;
+  padding: 10px 5px;
+}
+
 .content {
   font-size: 20px;
+  padding: 10px 5px;
 }
 </style>
