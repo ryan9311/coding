@@ -10,6 +10,7 @@
   </div>
 
   <VuestaPost :vueSta="vueSta" />
+  <button @click="more">더 보실?</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -22,6 +23,7 @@
 <script>
 import VueSta from "./assets/vuesta.js";
 import VuestaPost from "./components/VuestaPost.vue";
+import axios from "axios";
 
 export default {
   name: "App",
@@ -31,7 +33,22 @@ export default {
   data() {
     return {
       vueSta: VueSta,
+      moreClick: 0,
     };
+  },
+  methods: {
+    more() {
+      axios
+        .get(`https://codingapple1.github.io/vue/more${this.moreClick}.json`)
+        .then((result) => {
+          this.vueSta.push(result.data);
+          this.moreClick++;
+        })
+        .catch((err) => {
+          alert("더이상 게시물이 없습니다.");
+          console.log("에러코드:" + err);
+        });
+    },
   },
 };
 </script>
