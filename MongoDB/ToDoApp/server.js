@@ -79,3 +79,15 @@ app.get("/list", (req, res) => {
       res.render("list.ejs", { posts: result });
     });
 });
+
+app.delete("/delete", (req, res) => {
+  console.log(req.body);
+  req.body._id = parseInt(req.body._id);
+  db.collection("post").deleteOne(req.body, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("삭제 성공!");
+    res.status(200).send({ massge: "성공했습니당" });
+  });
+});
