@@ -6,10 +6,13 @@ const MongoClient = require("mongodb").MongoClient;
 MongoClient.connect(
   "mongodb+srv://admin:qwer1234@yongki.nk0gsia.mongodb.net/?retryWrites=true&w=majority",
   (err, client) => {
-    if (err) return console.log(err);
-    app.listen(8080, () => {
-      console.log("listening on 8080");
-    });
+    if (err) {
+      console.log(err);
+    } else {
+      app.listen(8080, () => {
+        console.log("listening on 8080");
+      });
+    }
   }
 );
 
