@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 const MongoClient = require("mongodb").MongoClient;
+app.set("view engine", "ejs");
 
 let db;
 MongoClient.connect(
@@ -50,4 +51,14 @@ app.post("/add", (req, res) => {
   );
 });
 
-app.get("/list", (req, res) => {});
+app.get("/list", (req, res) => {
+  db.collection("post")
+    .find()
+    .toArray((err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      // console.log(result);
+      res.render("list.ejs", { posts: result });
+    });
+});
