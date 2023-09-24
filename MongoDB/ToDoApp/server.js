@@ -12,3 +12,11 @@ app.get("/pet", function (req, 응답) {
 app.get("/beauty", (요청, 응답) => {
   응답.send("뷰티용품 사세요");
 });
+
+app.get("/", (요청, 응답) => {
+  응답.sendFile(__dirname + "/index.html");
+});
+
+app.get("/write", (요청, 응답) => {
+  응답.sendFile(__dirname + "/write.html");
+});
