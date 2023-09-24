@@ -3,16 +3,25 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 const MongoClient = require("mongodb").MongoClient;
 
+let db;
 MongoClient.connect(
   "mongodb+srv://admin:qwer1234@yongki.nk0gsia.mongodb.net/?retryWrites=true&w=majority",
   (err, client) => {
     if (err) {
       console.log(err);
-    } else {
-      app.listen(8080, () => {
-        console.log("listening on 8080");
-      });
     }
+
+    db = client.db("todoapp");
+    // db.collection("post").insertOne(
+    //   { _id: 0, 이름: "jhon", 나이: 20 },
+    //   (err, res) => {
+    //     console.log("저장완료");
+    //   }
+    // );
+
+    app.listen(8080, () => {
+      console.log("listening on 8080");
+    });
   }
 );
 
@@ -32,7 +41,11 @@ app.get("/write", (요청, 응답) => {
   응답.sendFile(__dirname + "/write.html");
 });
 
-app.post("/add", (요청, 응답) => {
-  console.log(요청.body);
-  응답.send("전송완료");
+app.post("/add", (req, res) => {
+  db.collection("post").insertOne(
+    { title: req.body.title, date: req.body.date },
+    () => {
+      res.send("전송완료");
+    }
+  );
 });
