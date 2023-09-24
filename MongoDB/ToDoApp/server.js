@@ -43,12 +43,29 @@ app.get("/write", (요청, 응답) => {
 });
 
 app.post("/add", (req, res) => {
-  db.collection("post").insertOne(
-    { title: req.body.title, date: req.body.date },
-    () => {
-      console.log("List 생성!");
+  db.collection("counter").findOne({ name: "게시물 개 수" }, (err, result) => {
+    if (err) {
+      console.log(err);
     }
-  );
+    console.log(result.totalPost);
+    let totalPost = result.totalPost;
+    db.collection("post").insertOne(
+      { _id: totalPost + 1, title: req.body.title, date: req.body.date },
+      () => {
+        console.log("List 생성!");
+        db.collection("counter").updateOne(
+          { name: "게시물 개 수" },
+          { $inc: { totalPost: 1 } },
+          (err) => {
+            if (err) {
+              console.log(err);
+            }
+            console.log("업데이트 완료!");
+          }
+        );
+      }
+    );
+  });
 });
 
 app.get("/list", (req, res) => {
