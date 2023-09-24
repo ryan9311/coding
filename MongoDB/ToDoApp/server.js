@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-
 const MongoClient = require("mongodb").MongoClient;
+
 MongoClient.connect(
-  "mongodb+srv://ryan93:dydrl1024A@!@yongki.nk0gsia.mongodb.net/?retryWrites=true&w=majority",
+  "mongodb+srv://admin:qwer1234@yongki.nk0gsia.mongodb.net/?retryWrites=true&w=majority",
   (err, client) => {
-    app.listen(8080, function () {
+    if (err) return console.log(err);
+    app.listen(8080, () => {
       console.log("listening on 8080");
     });
   }
