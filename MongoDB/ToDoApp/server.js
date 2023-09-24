@@ -45,7 +45,9 @@ app.post("/add", (req, res) => {
   db.collection("post").insertOne(
     { title: req.body.title, date: req.body.date },
     () => {
-      res.send("전송완료");
+      console.log("List 생성!");
     }
   );
 });
+
+app.get("/list", (req, res) => {});
