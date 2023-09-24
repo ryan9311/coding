@@ -88,6 +88,6 @@ app.delete("/delete", (req, res) => {
       console.log(err);
     }
     console.log("삭제 성공!");
-    res.status(200).send({ massge: "성공했습니당" });
+    res.status(200).send({ message: "성공했습니당" });
   });
 });

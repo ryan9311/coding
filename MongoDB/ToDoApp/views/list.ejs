@@ -62,7 +62,8 @@
     <script>
       $(".delete").click((e) => {
         let postId = e.target.dataset.id;
-        let clickPost = $(this);
+        let clickPost = $(e.target);
+
         $.ajax({
           method: "DELETE",
           url: "/delete",
@@ -72,7 +73,9 @@
             console.log("성공!");
             clickPost.parent("li").fadeOut();
           })
-          .fail(() => {});
+          .fail((xhr, textStatus, errorThrown) => {
+            console.log("xhr :" xhr, "textStatus :" textStatus, "errorThrown :" errorThrown);
+          });
       });
     </script>
   </body>
