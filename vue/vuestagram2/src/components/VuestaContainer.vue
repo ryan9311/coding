@@ -11,11 +11,12 @@
         :style="`background-image: url(${imgUrl}) `"
       ></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          :filter="filter"
+          :imgUrl="imgUrl"
+          v-for="filter in filters"
+          :key="filter"
+        ></FilterBox>
       </div>
     </div>
 
@@ -37,16 +38,50 @@
 
 <script>
 import ContentsPost from "./VuestaPost.vue";
+import FilterBox from "./FilterBox.vue";
 
 export default {
   name: "VuestaContainer",
   components: {
     ContentsPost,
+    FilterBox,
   },
   props: {
     vuesta: Array,
     step: Number,
     imgUrl: String,
+  },
+  data() {
+    return {
+      filters: [
+        "aden",
+        "_1977",
+        "brannan",
+        "brooklyn",
+        "clarendon",
+        "earlybird",
+        "gingham",
+        "hudson",
+        "inkwell",
+        "kelvin",
+        "lark",
+        "lofi",
+        "maven",
+        "mayfair",
+        "moon",
+        "nashville",
+        "perpetua",
+        "reyes",
+        "rise",
+        "slumber",
+        "stinson",
+        "toaster",
+        "valencia",
+        "walden",
+        "willow",
+        "xpro2",
+      ],
+    };
   },
 };
 </script>
