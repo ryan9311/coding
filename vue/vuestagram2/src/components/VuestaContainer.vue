@@ -7,7 +7,7 @@
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
       <div
-        class="upload-image"
+        :class="ClickFilter + ` upload-image`"
         :style="`background-image: url(${imgUrl}) `"
       ></div>
       <div class="filters">
@@ -23,7 +23,7 @@
     <!-- 글작성페이지 -->
     <div v-if="step == 2">
       <div
-        class="upload-image"
+        :class="ClickFilter + ` upload-image`"
         :style="`background-image: url(${imgUrl}) `"
       ></div>
       <div class="write">
@@ -81,7 +81,15 @@ export default {
         "willow",
         "xpro2",
       ],
+      ClickFilter: "",
     };
+  },
+  mounted() {
+    this.emitter.on("filter", (a) => {
+      console.log(a);
+      this.ClickFilter = a;
+      console.log(this.ClickFilter);
+    });
   },
 };
 </script>

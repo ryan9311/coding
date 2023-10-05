@@ -50,7 +50,15 @@ export default {
       step: 0,
       imgUrl: "",
       uploadTxt: "",
+      ClickFilter: "",
     };
+  },
+  mounted() {
+    this.emitter.on("filter", (a) => {
+      console.log(a);
+      this.ClickFilter = a;
+      console.log(this.ClickFilter);
+    });
   },
   methods: {
     more() {
