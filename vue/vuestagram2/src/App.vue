@@ -1,4 +1,6 @@
 <template>
+  <h4>안녕 {{ $store.state.name }}</h4>
+  <button @click="$store.state.name = '박'">바꿔!</button>
   <div class="header">
     <ul class="header-button-left">
       <li @click="step = 0">Cancel</li>
