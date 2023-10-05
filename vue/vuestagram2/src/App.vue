@@ -55,7 +55,6 @@ export default {
   },
   mounted() {
     this.emitter.on("filter", (a) => {
-      console.log(a);
       this.ClickFilter = a;
       console.log(this.ClickFilter);
     });
@@ -89,10 +88,16 @@ export default {
         date: "May 15",
         liked: false,
         content: `${this.uploadTxt}`,
-        filter: "perpetua",
+        filter: this.ClickFilter,
       };
       this.vuesta.unshift(uploadFile);
       this.step = 0;
+    },
+  },
+  watch: {
+    ClickFilter(newVal) {
+      // ClickFilter가 변경될 때마다 이 부분이 실행됩니다.
+      console.log("ClickFilter가 변경되었습니다:", newVal);
     },
   },
 };

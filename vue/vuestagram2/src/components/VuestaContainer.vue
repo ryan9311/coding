@@ -86,9 +86,7 @@ export default {
   },
   mounted() {
     this.emitter.on("filter", (a) => {
-      console.log(a);
       this.ClickFilter = a;
-      console.log(this.ClickFilter);
     });
   },
 };

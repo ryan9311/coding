@@ -8,7 +8,7 @@
       <span class="profile-name">{{ vuesta.name }}</span>
     </div>
     <div
-      class="post-body"
+      :class="vuesta.filter + ` post-body`"
       :style="{ backgroundImage: `url(${vuesta.postImage})` }"
     ></div>
     <div class="post-content">
