@@ -10,9 +10,10 @@
     <div
       :class="vuesta.filter + ` post-body`"
       :style="{ backgroundImage: `url(${vuesta.postImage})` }"
+      @click="$store.commit('likeClick')"
     ></div>
     <div class="post-content">
-      <p>{{ vuesta.likes }} Likes</p>
+      <p>{{ $store.state.likes }} Likes</p>
       <p>
         <strong>{{ vuesta.name }}</strong> {{ vuesta.content }}
       </p>
