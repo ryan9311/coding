@@ -1,7 +1,4 @@
 <template>
-  <h4>안녕 {{ $store.state.name }}</h4>
-  <h4>{{ $store.state.age }}</h4>
-  <button @click="$store.commit('chanegeName')">바꿔!</button>
   <div class="header">
     <ul class="header-button-left">
       <li @click="step = 0">Cancel</li>
@@ -40,6 +37,7 @@
 import vuesta from "./assets/vuesta.js";
 import VuestaContainer from "./components/VuestaContainer.vue";
 import axios from "axios";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: "App",
@@ -56,6 +54,14 @@ export default {
       ClickFilter: "",
     };
   },
+  computed: {
+    name() {
+      return this.$store.state.name;
+    },
+    ...mapState(["name", "age", "likes"]),
+    ...mapState([{ myName: "name" }, "age", "likes"]),
+  },
+
   mounted() {
     this.emitter.on("filter", (a) => {
       this.ClickFilter = a;
@@ -63,6 +69,7 @@ export default {
     });
   },
   methods: {
+    ...mapMutations(["setMore", "likeClick"]),
     more() {
       axios
         .get(`https://codingapple1.github.io/vue/more${this.moreClick}.json`)

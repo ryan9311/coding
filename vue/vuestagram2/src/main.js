@@ -7,4 +7,5 @@ let app = createApp(App);
 app.config.globalProperties.emitter = emitter;
 
 import store from "./store";
+import './registerServiceWorker'
 app.use(store).mount("#app");
