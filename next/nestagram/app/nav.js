@@ -25,7 +25,7 @@ export default function Nav() {
             만들기
           </li>
           <li>
-            <div>이미지</div>
+            <img className="nav_profile" src="./profile.jpg" />
             프로필
           </li>
           <li className="logout">

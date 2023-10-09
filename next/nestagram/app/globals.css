@@ -47,7 +47,12 @@ li {
 
 .nav_list > li > img {
   width: 25px;
+  height: 25px;
   margin-right: 10px;
+}
+
+.nav_profile {
+  border-radius: 100%;
 }
 
 .logout {
@@ -62,6 +67,7 @@ li {
 }
 .nav_list > li:hover > img {
   width: 27px;
+  height: 27px;
 }
 
 .user_info {
