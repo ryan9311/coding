@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function List() {
   let item = ["Tomatoes", "Pasta", "Coconut"];
+  //
   let [itemCnt, setItemCnt] = useState(new Array(item.length).fill(0));
 
   return (
