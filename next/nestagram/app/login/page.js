@@ -5,7 +5,7 @@ export default function Story() {
   return (
     <>
       <div className={styles.pageContainer}>
-        <div className="">로고</div>
+        <img src="./logo.png"></img>
         <form className="login_form" action="" method="POST">
           <input
             className="user_info"

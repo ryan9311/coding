@@ -3,7 +3,7 @@ import styles from "../page.module.css";
 export default function SignUp() {
   return (
     <div className={styles.pageContainer}>
-      <div>로고</div>
+      <img src="./logo.png"></img>
       <form action="" method="POST">
         <input
           className="user_info"

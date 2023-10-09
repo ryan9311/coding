@@ -7,7 +7,7 @@ export default function Nav() {
   return (
     <div className="nav_container">
       <ul className="nav_list">
-        <li>로고</li>
+        <img className="logo" src="./logo.png" alt="logo" />
         <li>
           <img src={`./homefill.svg`} />홈
         </li>
