@@ -4,6 +4,50 @@ body {
   padding: 0;
   text-decoration: none;
 }
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.nav_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav_list > li {
+  display: flex;
+  border: 1px solid;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.nav_list > li > img {
+  width: 18px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+}
+
+.nav_list > li:hover {
+  cursor: pointer;
+}
+
+.nav_container {
+  margin: 0;
+  width: 250px;
+  height: 100vh;
+}
 
 .user_info {
   display: block;
