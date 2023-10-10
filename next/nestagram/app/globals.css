@@ -18,6 +18,10 @@ li {
   height: 200px;
 }
 
+.main_container {
+  display: flex;
+  justify-content: center;
+}
 /* nav CSS */
 .nav_container {
   margin: 0;
@@ -129,7 +133,7 @@ li {
   background-color: #beadfa;
 }
 
-/* post CSS */
+/* post & friends CSS */
 
 .post_container {
   display: flex;
@@ -160,7 +164,8 @@ li {
   align-items: center;
 }
 
-.post_froile {
+.post_proile,
+.user_profile > img {
   width: 32px;
   height: 32px;
   border-radius: 30px;
@@ -175,4 +180,25 @@ li {
 
 .post_comment {
   margin-bottom: 15px;
+}
+
+.user_profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.friends_container {
+  width: 200px;
+  height: 500px;
+  overflow: scroll;
+  border: 1px solid;
+  margin-left: 60px;
+}
+
+.friends_container::-webkit-scrollbar {
+  display: none;
 }
