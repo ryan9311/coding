@@ -24,10 +24,12 @@ li {
 }
 /* nav CSS */
 .nav_container {
+  display: flex;
+  position: fixed;
+  left: 0;
   margin: 0;
   width: 250px;
-  height: 100vh;
-  position: fixed;
+  height: 100dvh;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
@@ -74,26 +76,17 @@ li {
   height: 27px;
 }
 
-.user_info {
-  display: block;
-  margin: 0 auto;
-  margin-top: 10px;
-  height: 30px;
-  width: 250px;
-  padding-left: 10px;
-}
-
 .post_make {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  background-color: rgba(67, 71, 85, 0.27);
+  height: 100vh;
   opacity: 1;
   transition-duration: 0.5s;
+  background-color: rgba(0, 0, 0, 0.24);
 }
 
 .post_make_hidden {
@@ -109,6 +102,25 @@ li {
   height: 500px;
   background-color: white;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* login CSS */
+.login_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.user_info {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  height: 30px;
+  width: 250px;
+  padding-left: 10px;
 }
 
 .user_info:focus {
@@ -201,4 +213,28 @@ li {
 
 .friends_container::-webkit-scrollbar {
   display: none;
+}
+
+/* prifile CSS */
+
+.profile_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile_header {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  border: 1px solid;
+  gap: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.profile_header > div > img {
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
 }

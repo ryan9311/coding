@@ -1,10 +1,9 @@
 import Link from "next/link";
-import styles from "../page.module.css";
 
 export default function Story() {
   return (
     <>
-      <div className={styles.pageContainer}>
+      <div className="login_container">
         <img src="./logo.png"></img>
         <form className="login_form" action="" method="POST">
           <input

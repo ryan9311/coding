@@ -6,7 +6,6 @@ export default function PostCard() {
       <div className="post_card">
         <div className="post_header">
           <img className="post_proile" src="./profile.jpg" /> 프로필
-          <div></div>
           <div>작성일자</div>
         </div>
         <div className="post_img">

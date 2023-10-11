@@ -24,7 +24,11 @@ export default function Nav() {
             <img src={`./plus.svg`} />
             만들기
           </li>
-          <li>
+          <li
+            onClick={() => {
+              location.href = "/profile";
+            }}
+          >
             <img className="nav_profile" src="./profile.jpg" />
             프로필
           </li>

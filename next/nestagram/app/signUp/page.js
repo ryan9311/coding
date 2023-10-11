@@ -1,8 +1,6 @@
-import styles from "../page.module.css";
-
 export default function SignUp() {
   return (
-    <div className={styles.pageContainer}>
+    <div className="login_container">
       <img src="./logo.png"></img>
       <form action="" method="POST">
         <input

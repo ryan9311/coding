@@ -1,6 +1,7 @@
 import Link from "next/link";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import LoginBtn from "./LoginBtn";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           </Link>
           <Link href="/list">List</Link>
           <Link href="/write">Write</Link>
+          <LoginBtn />
         </div>
         {children}
       </body>

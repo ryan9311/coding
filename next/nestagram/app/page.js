@@ -5,8 +5,8 @@ import PostCard from "./postCard";
 export default function Home() {
   return (
     <>
-      <Nav />
       <div className="main_container">
+        <Nav />
         <PostCard />
         <Friends />
       </div>
