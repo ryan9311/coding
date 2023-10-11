@@ -7,7 +7,7 @@ export default function Friends() {
         <img src="./profile.jpg" />
         프로필
       </div>
-      <div>친구 목록</div>
+      <div>친구 목록 </div>
       <div>친구 목록</div>
       <div>친구 목록</div>
       <div>친구 목록</div>

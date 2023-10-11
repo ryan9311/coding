@@ -1,6 +1,5 @@
 import { connectDB } from "@/util/datadase";
-import Link from "next/link";
-import DetailLink from "./DetailLink";
+import ListItem from "./ListItem";
 
 export default async function List() {
   const db = (await connectDB).db("forum");
@@ -8,15 +7,7 @@ export default async function List() {
 
   return (
     <div className="list-bg">
-      {result.map((post, i) => {
-        return (
-          <div className="list-item" key={i}>
-            <Link href={`detail/${post._id}`}>{post.title}</Link>
-            <p>1월 1일</p>
-            <DetailLink />
-          </div>
-        );
-      })}
+      <ListItem result={result} />
     </div>
   );
 }
