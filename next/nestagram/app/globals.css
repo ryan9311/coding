@@ -27,7 +27,6 @@ li {
   display: flex;
   position: fixed;
   left: 0;
-  margin: 0;
   width: 250px;
   height: 100dvh;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
@@ -225,6 +224,7 @@ li {
 
 .profile_header {
   display: flex;
+  width: 700px;
   height: 200px;
   align-items: center;
   border: 1px solid;
@@ -237,4 +237,44 @@ li {
   width: 130px;
   height: 130px;
   border-radius: 100%;
+  border: 2px solid rgba(67, 71, 85, 0.27);
+  padding: 3px;
+}
+
+.profile_cnt {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile_info {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile_content {
+  margin-top: 60px;
+  width: 700px;
+  border: 1px solid;
+}
+
+.tabMenu {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.tabMenu:hover {
+  cursor: pointer;
+}
+
+.userContents {
+  margin-top: 20px;
+  padding: 15px;
 }

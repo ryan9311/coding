@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codeTest_박용기</title>
+    <style>
+      @font-face {
+        font-family: "Pretendard-Regular";
+        src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+          format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Pretendard-Regular";
+      }
+
+      .header {
+        height: 700px;
+        background-image: url("http://test.undermilli.com/static/background.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+
+      .logo {
+        width: 157px;
+        height: 30px;
+        margin-right: 90px;
+      }
+      .logo:hover {
+        cursor: pointer;
+      }
+
+      .navList {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        font-weight: 500;
+        color: white;
+      }
+
+      .navList > li:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;
+      }
+
+      .openApp {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 90px;
+        width: 143px;
+        height: 48px;
+        border-radius: 40px;
+        background-color: white;
+        font-weight: bold;
+        transition-duration: 0.5s;
+      }
+      .openApp > a {
+        text-decoration: none;
+      }
+      .openApp > a:visited,
+      .openApp > a:active {
+        color: black;
+      }
+
+      .openApp:hover {
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+      }
+
+      .headerContentsContainer {
+        display: flex;
+        height: 550px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .headerContentsContainer > h1 {
+        font-size: 70px;
+        font-weight: 900;
+        color: white;
+      }
+
+      .serveContents {
+        width: 689px;
+        font-size: 23px;
+        font-weight: 600;
+        color: white;
+        padding-top: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="nav">
+        <div class="logo">
+          <a href="">
+            <img src="http://test.undermilli.com/static/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div>
+          <ul class="navList">
+            <li>Download</li>
+            <li>Nitro</li>
+            <li>Discover</li>
+            <li>Safety</li>
+            <li>Support</li>
+            <li>Blog</li>
+            <li>Careers</li>
+          </ul>
+        </div>
+        <div class="openApp">
+          <a href=""> Open Discord </a>
+        </div>
+      </div>
+      <div class="headerContentsContainer">
+        <h1 class="mainContents">이런 공간이 있다면 어떨까요...</h1>
+        <p class="serveContents">
+          ...학교 동아리, 게임 그룹, 세계 예술 감상 커뮤니티에 소속되어 유대감을
+          느낄 수 있는 공간. 소중한 단짝 친구들과 어울릴 수 있는 우리만의 공간.
+          더 쉽게, 매일 어울리고 이야기할 수 있는 그런 공간 말이에요.
+        </p>
+      </div>
+    </header>
+  </body>
+</html>
